@@ -222,8 +222,14 @@ class PageFlipWidgetState extends State<PageFlipWidget> with TickerProviderState
         onPanEnd: (details) {},
         onTapCancel: () {},
         onHorizontalDragCancel: () => _isForward = null,
-        onHorizontalDragUpdate: (details) => _turnPage(details, dimens),
-        onHorizontalDragEnd: (details) => _onDragFinish(),
+        onHorizontalDragUpdate: (details) { 
+          print("drag update");
+          _turnPage(details, dimens); 
+        },
+        onHorizontalDragEnd: (details) {
+          print("drag end");
+          _onDragFinish();
+        },
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
