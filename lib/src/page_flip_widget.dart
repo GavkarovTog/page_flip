@@ -228,7 +228,7 @@ class PageFlipWidgetState extends State<PageFlipWidget> with TickerProviderState
         },
         onHorizontalDragEnd: (details) {
           print("drag end");
-          // _onDragFinish();
+          _onDragFinish();
         },
         child: Stack(
           fit: StackFit.expand,
