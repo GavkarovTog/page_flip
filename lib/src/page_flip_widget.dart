@@ -127,33 +127,33 @@ class PageFlipWidgetState extends State<PageFlipWidget> with TickerProviderState
     }
   }
 
-  Future _onDragFinish() async {
+  void _onDragFinish() {
     if (_isForward != null) {
       if (_isForward == true) {
         if (!_isLastPage && _controllers[pageNumber].value <= (widget.cutoffForward + 0.15)) {
-          await nextPage();
+          nextPage();
         } else {
           if (!_isLastPage) {
-            await _controllers[pageNumber].forward();
+            _controllers[pageNumber].forward();
           }
         }
       } else {
         if (!_isFirstPage && _controllers[pageNumber - 1].value >= widget.cutoffPrevious) {
-          await previousPage();
+          previousPage();
         } else {
           if (_isFirstPage) {
-            await _controllers[pageNumber].forward();
+            _controllers[pageNumber].forward();
           } else {
-            await _controllers[pageNumber - 1].reverse();
+            _controllers[pageNumber - 1].reverse();
             if (!_isFirstPage) {
-              await previousPage();
+              previousPage();
             }
           }
         }
       }
     }
 
-    // _isForward = null;
+    _isForward = null;
     currentPage.value = -1;
   }
 
