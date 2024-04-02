@@ -127,26 +127,26 @@ class PageFlipWidgetState extends State<PageFlipWidget> with TickerProviderState
     }
   }
 
-  void _onDragFinish() {
+  Future _onDragFinish() async {
     if (_isForward != null) {
       if (_isForward == true) {
         if (!_isLastPage && _controllers[pageNumber].value <= (widget.cutoffForward + 0.15)) {
-          nextPage();
+          await nextPage();
         } else {
           if (!_isLastPage) {
-            _controllers[pageNumber].forward();
+            await _controllers[pageNumber].forward();
           }
         }
       } else {
         if (!_isFirstPage && _controllers[pageNumber - 1].value >= widget.cutoffPrevious) {
-          previousPage();
+          await previousPage();
         } else {
           if (_isFirstPage) {
-            _controllers[pageNumber].forward();
+            await _controllers[pageNumber].forward();
           } else {
-            _controllers[pageNumber - 1].reverse();
+            await _controllers[pageNumber - 1].reverse();
             if (!_isFirstPage) {
-              previousPage();
+              await previousPage();
             }
           }
         }
@@ -227,8 +227,8 @@ class PageFlipWidgetState extends State<PageFlipWidget> with TickerProviderState
           _turnPage(details, dimens); 
         },
         onHorizontalDragEnd: (details) {
-          print("drag end");
-          _onDragFinish();
+          // print("drag end");
+          // _onDragFinish();
         },
         child: Stack(
           fit: StackFit.expand,
