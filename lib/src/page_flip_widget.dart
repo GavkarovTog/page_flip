@@ -154,7 +154,7 @@ class PageFlipWidgetState extends State<PageFlipWidget> with TickerProviderState
     }
 
     _isForward = null;
-    currentPage.value = -1;
+    // currentPage.value = -1;
   }
 
   Future nextPage() async {
