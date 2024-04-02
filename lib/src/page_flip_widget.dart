@@ -106,7 +106,7 @@ class PageFlipWidgetState extends State<PageFlipWidget> with TickerProviderState
   void _turnPage(DragUpdateDetails details, BoxConstraints dimens) {
     // if ((_isLastPage) || !isFlipForward.value) return;
     currentPage.value = pageNumber;
-    // currentWidget.value = Container();
+    currentWidget.value = Container();
     final ratio = details.delta.dx / dimens.maxWidth;
     if (_isForward == null) {
       if (widget.isRightSwipe ? details.delta.dx < 0.0 : details.delta.dx > 0.0) {
@@ -228,7 +228,7 @@ class PageFlipWidgetState extends State<PageFlipWidget> with TickerProviderState
         },
         onHorizontalDragEnd: (details) {
           print("drag end");
-          _onDragFinish();
+          // _onDragFinish();
         },
         child: Stack(
           fit: StackFit.expand,
